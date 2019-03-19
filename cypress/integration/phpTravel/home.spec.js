@@ -1,24 +1,20 @@
 let nameSearch = "Singapore"
-
+const searchResultTable = ':nth-of-type(1) > [class="select2-result-sub"]'
 describe('Seach Form', () => {
     context('Search Hotel', () => {
 
         it('Input text to search form', () => {
-            cy.visit('/');
-            cy.title().should('eq', 'PHPTRAVELS | Travel Technology Partner')
-            cy.get('form[name="fCustomHotelSearch"]  a > span:first-child')
-                .click()
-                .focused()
-                .type(nameSearch)
-            //cy.get(':nth-of-type(1) > [class="select2-result-sub"] li:first-child').click()
-            cy.get(':nth-of-type(1) > [class="select2-result-sub"]').within(() => {
+            cy.inputHotelForm(nameSearch)
+            cy.get(searchResultTable).within(() => {
                 cy.contains('Rendezvous Hotel').click()
             })
 
         });
 
-        it('Click on the hotel name at Hotels result-table ', () => {
-
+        it.only('input Calendar', ()=>{
+            cy.visit('/')
+            const checkIn = cy.get('form[name="fCustomHotelSearch"]').find('.dpd1');
+            checkIn.click()
         })
     })
 })
