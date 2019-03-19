@@ -21,15 +21,25 @@ describe('Seach Form', () => {
             cy.get('input[type="search"]').type('book')
             cy.get('div[class="suggest-list--3Tm8"] > a').then((result) => {
                 let listItem = []
-                result.forEach(element => {
-                    listItem.push(element.text)
+                console.log('type of result', typeof result)
+
+                for(var i = 0 ; i < result.length; i++){
+                    console.log(result[i].text)
+                    listItem.push(result[i].text);
+                }
+
+                console.log('--------------')
+                for(var k in result){
+                    console.log(result[k].text)
+                }
+                console.log('--------------')
+                
+                result.forEach((element) => {
+                    console.log(element)
                 })
-                // for(var i = 0 ; i < result.length; i++){
-                //     console.log(result[i].text)
-                //     listItem.push(result[i].text);
-                // }
                 console.log(listItem)
             });
+     
         })
         //    .its('length')
         //    .should('eq', 10)   
