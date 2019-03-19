@@ -16,13 +16,23 @@ describe('Seach Form', () => {
         //     checkIn.click()
         // })
 
-        it.only('Input item to search', () =>{
+        it.only('Input item to search', () => {
             cy.visit('/')
             cy.get('input[type="search"]').type('book')
-               cy.get('div[class="suggest-list--3Tm8"] > a')
-               .its('length')
-               .should('eq', 10)   
-
+            cy.get('div[class="suggest-list--3Tm8"] > a').then((result) => {
+                let listItem = []
+                result.forEach(element => {
+                    listItem.push(element.text)
+                })
+                // for(var i = 0 ; i < result.length; i++){
+                //     console.log(result[i].text)
+                //     listItem.push(result[i].text);
+                // }
+                console.log(listItem)
+            });
         })
+        //    .its('length')
+        //    .should('eq', 10)   
+
     })
 })
