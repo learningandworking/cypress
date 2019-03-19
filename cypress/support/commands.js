@@ -23,3 +23,12 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("inputHotelForm", (hotelName) => {
+    cy.visit('/');
+    cy.title().should('eq', 'PHPTRAVELS | Travel Technology Partner')
+    cy.get('form[name="fCustomHotelSearch"]  a > span:first-child')
+        .click()
+        .focused()
+        .type(hotelName)
+})
