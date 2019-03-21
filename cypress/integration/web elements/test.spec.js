@@ -17,27 +17,28 @@ describe('Seach Form', () => {
         // })
 
         it.only('Input item to search', () => {
-            cy.visit('/')
+            cy.visit('https://www.lazada.vn/')
             cy.get('input[type="search"]').type('book')
             cy.get('div[class="suggest-list--3Tm8"] > a').then((result) => {
                 let listItem = []
+                console.log('result: ' ,result);
                 console.log('type of result', typeof result)
 
                 for(var i = 0 ; i < result.length; i++){
-                    console.log(result[i].text)
-                    listItem.push(result[i].text);
+                    console.log(result[i])
+                    listItem.push(result[i]);
                 }
 
-                console.log('--------------')
-                for(var k in result){
-                    console.log(result[k].text)
-                }
-                console.log('--------------')
+                // console.log('--------------')
+                // for(var k in result){
+                //     console.log(result[k].text)
+                // }
+                // console.log('--------------')
                 
                 result.forEach((element) => {
                     console.log(element)
                 })
-                console.log(listItem)
+                //console.log(listItem)
             });
      
         })
