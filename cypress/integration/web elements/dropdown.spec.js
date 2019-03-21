@@ -26,9 +26,11 @@ describe('Handle drop-down menu', () => {
             cy.visit('https://www.spicejet.com/')
             cy.get('.adult-infant-child').within(() => {
                 cy.get('#divpaxinfo').click()
-                    // choose number of adult
-                    cy.get('#divAdult #hrefIncAdt').dblclick()
-                    // choose number of child
+                   
+                    // get error if run : cy.get('#divAdult #hrefIncAdt').dblclick()
+                    
+                    // get no error if run click() first: 
+                    cy.get('#divAdult #hrefIncAdt').click()
                     cy.get('#divChild #hrefIncChd').click()
 
             })
