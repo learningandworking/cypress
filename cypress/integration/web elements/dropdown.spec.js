@@ -1,4 +1,4 @@
-require('cypress-xpath')
+require ('cypress-xpath')
 
 describe('Handle drop-down menu', () => {
     context('Drop-down without navigation', () => {
@@ -27,9 +27,12 @@ describe('Handle drop-down menu', () => {
             cy.get('.adult-infant-child').within(() => {
                 cy.get('#divpaxinfo').click()
                     // choose number of adult
-                    cy.get('#divAdult #hrefIncAdt').dblclick()
+                    //cy.get('#divAdult #hrefIncAdt').dblclick()
                     // choose number of child
-                    cy.get('#divChild #hrefIncChd').click()
+                    cy.get('#divChild #hrefIncChd')
+                      .scrollIntoView()
+                      //.should('be.visible')
+                      .dblclick()
 
             })
         })
