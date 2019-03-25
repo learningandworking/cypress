@@ -1,6 +1,6 @@
 const title = "SpiceJet - Flight Booking for Domestic and International, Cheap Air Tickets"
-const departureCity = 'Ahmedabad', destinationCity1 = 'Dubai, All Airports',
-      destinationCity = 'Hyderabad'
+const departureCity = 'Ahmedabad', destinationCity = 'Dubai, All Airports',
+      destinationCity1 = 'Hyderabad'
 
 describe('Search Fly Information', () => {
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('Search Fly Information', () => {
       .get('.search_options_menucontent #dropdownGroup1')
       .contains(departureCity).click()
     //Choose destination city
-    cy.get('#ctl00_mainContent_ddl_destinationStation1_CTNR')
+    cy.get('#glsctl00_mainContent_ddl_destinationStation1_CTNR')
       .contains(destinationCity)
       .click()
     //Choose departure day
@@ -47,6 +47,7 @@ describe('Search Fly Information', () => {
      * redirect to the detailed booking page.
      * Based on the destination place, we get a popup or not.
     */
+   cy.url().should('eq', 'https://book.spicejet.com/Select.aspx')
     cy.get('body').then(($body) => {
       if ($body.find('#OKToBoardPopUP').is(":visible")) { //< jQuey ": isvisible"
       //https://www.tutorialrepublic.com/faq/how-to-check-an-element-is-visible-or-not-using-jquery.php
