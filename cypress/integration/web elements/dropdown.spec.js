@@ -1,4 +1,4 @@
-require('cypress-xpath')
+require ('cypress-xpath')
 
 describe('Handle drop-down menu', () => {
     context('Drop-down without navigation', () => {
