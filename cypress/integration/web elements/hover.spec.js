@@ -12,13 +12,21 @@ describe('Hover', ()=>{
 
         cy.get('#nav-shop a')
           .trigger('mouseover')
-          .get('#nav-flyout-anchor #nav-flyout-shopAll a')
+          .get('  #nav-flyout-anchor #nav-flyout-shopAll a span')
           .then((obj)=>{
-                   console.log("Obj are: ", obj)
-                for(let i=0; i <=obj.length; i++){
-                    console.log("list items are: ", obj[i].text)
+                let arrItem = []
+                //console.log("Obj length: ", obj.length)
+                for(let i=0; i < obj.length; i++){
+                  arrItem.push(obj[i].innerText)
                 }
+                expect(27).to.equal(arrItem.length)
+                return arrItem
           })
+          // .then((arr) =>{
+          //       console.log("list of department items: ", arr)
+          //       expect(27).to.equal(arr.length)
+          // })
+          
         
         // method 2: use "each" to loop and text in Jquery
     //     const departmentLoc = cy.get('#nav-shop a')
