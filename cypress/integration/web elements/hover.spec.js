@@ -49,10 +49,11 @@ describe('Hover', () => {
       })
 
       it.only('Hover on Categories: Women', () => {
-        cy.get('.sf-menu > :nth-child(1)')
-          .trigger('mousemove')
-          
-        
+        cy.get('.sf-menu > :nth-child(1) > ul')
+          .invoke('show') //show - a Jquery function This forces it to have a 'display: block' CSS style inlined on it
+          .wait(1500)
+          .find('a').contains('T-shirts').click()
+        cy.title().should('include', 'T-shirts')
       })
     })
 
